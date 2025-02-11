@@ -1,0 +1,249 @@
+{
+    "education": [
+        {
+            "place": "Florida Polytechnic University",
+            "achievement": "Bachelor's Degree of Science",
+            "subject": "Computer Science",
+            "starting-year": 2015,
+            "ending-year": 2019,
+            "description": "After high school, I pursued a degree in computer science at Florida Polytechnic University. The official title for my degree path was \"Cybergaming\", which meant I received a computer science education with a focus in game design and development. During my education, I participated in multiple game jams and expos hosted by the university."
+        },
+        {
+            "place": "California Institute of the Arts (through Coursera)",
+            "achievement": "Certificate of Specialization",
+            "subject": "Game Design: Art and Concepts",
+            "starting-year": 2023,
+            "ending-year": 2024,
+            "description": "While seeking my next career opportunity, I worked on a certification course series to verify my abilities in game design and development. This series handles game design, character development, narrative structure, and world design. The courses culminate in a capstone project to make a fleshed out game design document.",
+            "link": "https://coursera.org/share/c5fd449f908ed15ab6590992bb602212",
+            "certifications": [
+                {
+                    "type": "Introduction to Game Design",
+                    "link": "https://coursera.org/share/8754f474ba690bb09c5d72eae9395442"
+                },
+                {
+                    "type": "Story and Narrative Development for Video Games",
+                    "link": "https://coursera.org/share/603a8b15e7815edad27f3b0018d5c82e"
+                },
+                {
+                    "type": "World Design for Video Games",
+                    "link": "https://coursera.org/share/de0956aa73564a42edd150e2fd1e1988"
+                },
+                {
+                    "type": "Character Design for Video Games",
+                    "link": "https://coursera.org/share/2cb6c740ccb60453d2915da6e5a0a5ec"
+                },
+                {
+                    "type": "Game Design Document: Define the Art & Concepts",
+                    "link": "https://coursera.org/share/b18f5acb5dc8db0dd3c94767364a08b2"
+                }
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "skill": "PlayCanvas Engine",
+            "proficiency": 5
+        },
+        {
+            "skill": "JavaScript",
+            "proficiency": 5
+        },
+        {
+            "skill": "Vue.js",
+            "proficiency": 5
+        },
+        {
+            "skill": "CSS",
+            "proficiency": 5
+        },
+        {
+            "skill": "SCSS",
+            "proficiency": 5
+        },
+        {
+            "skill": "Node.js",
+            "proficiency": 4
+        },
+        {
+            "skill": "8th Wall",
+            "proficiency": 3
+        },
+        {
+            "skill": "Unity Engine",
+            "proficiency": 4
+        },
+        {
+            "skill": "Software Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "Web Game Development",
+            "proficiency": 5
+        },
+        {
+            "skill": "Game Development",
+            "proficiency": 5
+        },
+        {
+            "skill": "Game Design",
+            "proficiency":  4
+        },
+        {
+            "skill": "AR Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "XR Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "VR Development",
+            "proficiency": 3
+        },
+        {
+            "skill": "Accessibility",
+            "proficiency": 3
+        },
+        {
+            "skill": "Version Control",
+            "proficiency": 4
+        },
+        {
+            "skill": "Smart Git",
+            "proficiency": 4
+        },
+        {
+            "skill": "Jira",
+            "proficiency": 4
+        },
+        {
+            "skill": "Notion",
+            "proficiency": 5
+        },
+        {
+            "skill": "Front End Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "Custom Vision AI",
+            "proficiency": 2
+        },
+        {
+            "skill": "UDP",
+            "proficiency": 1
+        },
+        {
+            "skill": "C++",
+            "proficiency": 2
+        },
+        {
+            "skill": "Java",
+            "proficiency": 2
+        },
+        {
+            "skill": "Python",
+            "proficiency": 1
+        },
+        {
+            "skill": "HTML",
+            "proficiency": 5
+        },
+        {
+            "skill": "GNU Image Manipulation Program",
+            "proficiency": 3
+        },
+        {
+            "skill": "Vegas Movie Studio HD",
+            "proficiency": 3
+        },
+        {
+            "skill": "Music Composition",
+            "proficiency": 1
+        },
+        {
+            "skill": "FFMPEG",
+            "proficiency": 1
+        },
+        {
+            "skill": "Jeeliz Face Filter",
+            "proficiency": 3
+        },
+        {
+            "skill": "Public Speaking",
+            "proficiency": 3
+        },
+        {
+            "skill": "Pitch Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "Presentation Development",
+            "proficiency": 4
+        },
+        {
+            "skill": "Open Broadcast Software",
+            "proficiency": 3
+        },
+        {
+            "skill": "Video Editing",
+            "proficiency": 2
+        },
+        {
+            "skill": "Audacity",
+            "proficiency": 2
+        },
+        {
+            "skill": "Audio Editing",
+            "proficiency": 2
+        },
+        {
+            "skill": "Efficiency",
+            "proficiency": 4
+        },
+        {
+            "skill": "JSON",
+            "proficiency": 5
+        },
+        {
+            "skill": "Slack",
+            "proficiency": 4
+        },
+        {
+            "skill": "Varjo Development",
+            "proficiency": 1
+        },
+        {
+            "skill": "Blender",
+            "proficiency": 1
+        },
+        {
+            "skill": "3D Modeling",
+            "proficiency": 1
+        },
+        {
+            "skill": "Narrative Development",
+            "proficiency": 2
+        },
+      {
+        "skill": "Interactive Storytelling",
+        "proficiency": 2
+      },
+      {
+        "skill": "Bricklink Studio",
+        "proficiency": 4
+      },
+        {
+            "skill": "Game Design Documents",
+            "proficiency":  3
+        },
+        {
+            "skill": "World Design",
+            "proficiency": 1
+        },
+        {
+            "skill": "Character Design",
+            "proficiency":  1
+        }
+    ]
+}

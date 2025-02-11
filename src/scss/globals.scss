@@ -1,0 +1,52 @@
+body, html {
+	font-family: var(--body-font);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	line-height: normal;
+
+	span, a {
+		width: fit-content;
+		height: fit-content;
+		display: block;
+		user-select: none;
+	}
+
+	img
+	{
+		user-select: none;
+	}
+}
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 16px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--accent-color);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--header-bg);
+	border-radius: 8px;
+}
+
+:root {
+	--font-scale: 1px;
+	--header-bg: #b660cd;
+	--content-bg: #d7bfdc;
+	--accent-color: #ffc055;
+	--font-color: black;
+	--header-font: 'Roboto Mono', monospace;
+	--body-font: 'Roboto Mono', monospace;
+}
+
+@function font($size)
+{
+	@return calc(#{$size} * var(--font-scale));
+}
+
