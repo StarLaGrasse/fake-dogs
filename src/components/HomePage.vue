@@ -1,11 +1,43 @@
 <template>
-	<div class="home-container">
+    <div class="home-container">
         <div class="home-content">
             <span class="home-header" v-html="translate('home-header')" />
             <span class="home-subheader" v-html="translate('home-subheader')" />
-            <span class="home-body" v-html="translate('home-body')"/>
+            <span class="home-body" v-html="translate('home-body')" />
         </div>
-	</div>
+        <div class="contacts-container" v-if="desktop">
+            <div class="buttons-container">
+                <a href="https://starlenelagrasse.com/" target="_blank">
+                    <div class="contact-button">
+                        <img src="../assets/imgs/starlene-lagrasse.png" />
+                    </div>
+                </a>
+            </div>
+            <span>Site created by Starlene F. LaGrasse</span>
+            <div class="buttons-container">
+                <a href="https://www.linkedin.com/in/star-lagrasse" target="_blank">
+                    <div class="contact-button">
+                        <img src="../assets/imgs/linkedin.png" />
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="contacts-container mobile" v-else>
+            <span>Site created by Starlene F. LaGrasse</span>
+            <div class="buttons-container">
+                <a href="https://starlenelagrasse.com/" target="_blank">
+                    <div class="contact-button">
+                        <img src="../assets/imgs/starlene-lagrasse.png" />
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/star-lagrasse" target="_blank">
+                    <div class="contact-button">
+                        <img src="../assets/imgs/linkedin.png" />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -89,7 +121,7 @@
             position: relative;
             margin-top: 16px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-items: center;
             align-items: center;
             justify-content: center;
@@ -98,10 +130,17 @@
             height: fit-content;
             margin-bottom: 24px;
 
+            &.mobile
+            {
+                flex-direction:column;
+            }
+
             span {
                 position: relative;
                 font-size: font(24);
                 text-transform: uppercase;
+                margin: 0 8px;
+                text-align: center;
             }
 
             .buttons-container {
@@ -138,14 +177,6 @@
                     align-items: center;
                     justify-content: center;
                     align-content: center;
-
-                    &:first-of-type {
-                        margin-left: 16px;
-                    }
-
-                    &:last-of-type {
-                        margin-right: 0
-                    }
 
                     &:active, &:hover {
                         background-color: var(--accent-color);
