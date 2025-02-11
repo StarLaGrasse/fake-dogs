@@ -1,9 +1,7 @@
 <template>
     <div class="home-container">
         <div class="home-content">
-            <span class="home-header" v-html="translate('home-header')" />
-            <span class="home-subheader" v-html="translate('home-subheader')" />
-            <span class="home-body" v-html="translate('home-body')" />
+            <span v-for="(skill, s) in skills" class="home-body" v-html="skill.proficiency + ' ' + skill.skill" :key="'skill'+s"/>
         </div>
         <div class="contacts-container" v-if="desktop">
             <div class="buttons-container">
@@ -45,6 +43,16 @@
     export default {
 		name: 'HomePage',
 		props: {
+        },
+        data: function () {
+            return {
+                skills: []
+            };
+        },
+        mounted: async function()
+        {
+            await fetch('./assets/data/skills-education.json').then((response) => { return response.json(); }).then((data) => {this.skills = this.mergeSort(data.skills, false, ["proficiency","skill"]); });
+            console.log(this.skills);
         },
         methods:{
         },
