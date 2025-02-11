@@ -11,6 +11,7 @@ const store = createStore({
         font: 0,
         desktop: true,
         currentPage: 1,
+        loggedin: false
     },
     mutations: {
         increment(state) {
@@ -37,6 +38,10 @@ const store = createStore({
         {
             state.currentPage = page;
         },
+        setLoggedin(state, log)
+        {
+            state.loggedin = log;
+        }
     },
     getters:
     {
@@ -48,6 +53,7 @@ const store = createStore({
         getLocale(state) { return state.locale; },
         getDesktop(state) { return state.desktop; },
         getCurrentPage(state) { return state.currentPage; },
+        getLoggedin(state) {return state.loggedin;}
     }
 })
 

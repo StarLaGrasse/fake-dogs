@@ -12,7 +12,7 @@
             <div class="app-view-window">
                 <div class="app-panel">
                     <TransitionerObject name="fade-and-blur-normal">
-                        <HomePage v-if="displayedPage === 1" />
+                        <HomePage v-if="displayedPage === 1" :style="{'pointer-events': loggedin ? 'visible' : 'none'}" />
                     </TransitionerObject>
                     <TransitionerObject name="fade-and-blur-normal">
                         <OptionsMenu v-if="displayedPage===10" />
@@ -20,6 +20,7 @@
                 </div>
             </div>
             <div class="box-overlay" v-if="scanlines" />
+            <LoginBumper v-if="!loggedin && displayedPage!==10" />
         </div>
         <div class="attribution">
         <div class="contacts-container" v-if="desktop">
@@ -84,6 +85,7 @@
 	import ScanlineEffect from './components/ScanlineEffect.vue';
     import OptionsMenu from './components/OptionsMenu.vue';
     import TransitionerObject from './components/TransitionerObject.vue';
+    import LoginBumper from './components/LoginBumper.vue';
     import { mapGetters } from 'vuex';
 
 	export default {
@@ -92,7 +94,8 @@
             HomePage,
 			ScanlineEffect,
             OptionsMenu,
-            TransitionerObject
+            TransitionerObject,
+            LoginBumper
 		},
 		data: function () {
 			return {
@@ -143,6 +146,7 @@
 			...mapGetters({
                 scanlines: 'getScanlines',
                 currentPage: 'getCurrentPage',
+                loggedin: 'getLoggedin'
 			})
         },
         mounted: async function ()
