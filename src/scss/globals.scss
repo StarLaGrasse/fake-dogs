@@ -37,12 +37,45 @@ body, html {
 
 :root {
 	--font-scale: 1px;
-	--header-bg: #b660cd;
-	--content-bg: #d7bfdc;
-	--accent-color: #ffc055;
+	--header-bg: #300D38;
+	--content-bg: white;
+	--accent-color: #FBA919;
 	--font-color: black;
-	--header-font: 'Roboto Mono', monospace;
-	--body-font: 'Roboto Mono', monospace;
+	--header-font: Jellee, monospace;
+	--body-font: Funtype, sans-serif;
+}
+
+@font-face {
+	font-family: "Jellee";
+	src: url("@/assets/fonts/Jellee-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Architect";
+	src: url("@/assets/fonts/ArchitectsDaughter.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Funtype";
+	src: url("@/assets/fonts/Funtype.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Dogica";
+	src: url("@/assets/fonts/dogicapixelbold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Dogica";
+	src: url("@/assets/fonts/dogicapixel.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
 }
 
 @function font($size)

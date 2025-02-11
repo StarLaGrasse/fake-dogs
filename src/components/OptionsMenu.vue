@@ -70,9 +70,9 @@
 				if (this.root)
 				{
 					this.$store.commit("setColorScale", (this.colorScale + 1) % 3);
-					this.root.style.setProperty("--header-bg", this.colorScale === 2 ? 'grey' : this.colorScale === 1 ? '#306230' : '#b660cd');
-					this.root.style.setProperty("--content-bg", this.colorScale === 2 ? 'white' : this.colorScale === 1 ? '#9bbc0f' : '#d7bfdc');
-					this.root.style.setProperty("--accent-color", this.colorScale === 2 ? 'lightgrey' : this.colorScale === 1 ? '#8bac0f' : '#ffc055');
+					this.root.style.setProperty("--header-bg", this.colorScale === 2 ? 'grey' : this.colorScale === 1 ? '#306230' : '#300D38');
+					this.root.style.setProperty("--content-bg", this.colorScale === 1 ? '#9bbc0f' : 'white');
+					this.root.style.setProperty("--accent-color", this.colorScale === 2 ? 'lightgrey' : this.colorScale === 1 ? '#8bac0f' : '#FBA919');
                     this.root.style.setProperty("--font-color", this.colorScale === 1 ? '#0f380f' : 'black');
                     this.updateOptionsCookie();
 				}
@@ -81,14 +81,14 @@
 			{
 				if (this.root) {
 					this.$store.commit("setFont", (this.font + 1) % 3);
-					this.root.style.setProperty("--header-font", this.font === 2 ? "'Roboto Mono', monospace" : this.font === 1 ? "MatrixSansScreen, sans-serif" : "PlayerSans, sans-serif");
-					this.root.style.setProperty("--body-font", this.font === 2 ? "'Roboto Mono', monospace" : this.font === 1 ? "MatrixSansScreen, sans-serif" : "MatrixSansVideo, sans-serif");
+					this.root.style.setProperty("--header-font", this.font === 2 ? "'Roboto Mono', monospace" : this.font === 1 ? "Dogica, monospace" : "Jellee, monospace");
+					this.root.style.setProperty("--body-font", this.font === 2 ? "'Roboto Mono', monospace" : this.font === 1 ? "Dogica, monospace" : "Funtype, sans-serif");
                     this.updateOptionsCookie();
 				}
             },
             updateOptionsCookie: function ()
             {
-                this.writeCookie("optionsData", JSON.stringify({ "scanlines": this.scanlines, "fontScale": ((this.fontSlider && this.root) ? this.fontSlider.value : 1), "colorScale": this.colorScale, "fontFamily": this.font }), 60);
+                this.writeCookie("optionsData", JSON.stringify({ "scanlines": this.scanlines, "fontScale": ((this.fontSlider && this.root) ? this.fontSlider.value : 1), "colorScale": this.colorScale, "fontFamily": this.font }), 60*24);
             }
 		},
 		mounted: async function () {

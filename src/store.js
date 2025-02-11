@@ -5,7 +5,7 @@ const store = createStore({
     state: {
         locale: "en-US",
         count: 0,
-        scanlines: true,
+        scanlines: false,
         fontScale: 1,
         colorScale: 0,
         font: 0,
