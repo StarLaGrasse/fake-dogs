@@ -139,6 +139,14 @@
                             break;
                     }
                 }
+            },
+            getBreeds: async function()
+            {
+                await fetch("https://frontend-take-home-service.fetch.com/dogs/breeds", {"method": "GET", "headers": {"Content-Type": "application/json; charset=utf-8"}, "credentials":"include"})
+                .then((response)=>{
+                    if (response.status === 200) this.$store.commit("setLoggedin", true);
+                    console.log(response.json());
+                });
             }
 		},
 		computed:
@@ -152,8 +160,10 @@
         mounted: async function ()
         {
             this.displayedPage=this.currentPage;
-
             window.addEventListener( "popstate", function () { requestAnimationFrame(this.goBack.bind(this)) }.bind(this));
+            await this.getBreeds();
+
+            document.addEventListener("login-successful", this.getBreeds.bind(this));
         }
 }
 </script>

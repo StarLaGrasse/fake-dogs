@@ -1,4 +1,5 @@
 import { translateKey, translateKeyRaw } from "./translate.js"
+const loginEvent = new CustomEvent("login-successful");
 const date = new Date();
 export const mixins = {
     props: {},
@@ -179,6 +180,7 @@ export const mixins = {
                 }
             }
             return output;
-        }
+        },
+        dispatchLogin: function(){document.dispatchEvent(loginEvent);}
     }
 };

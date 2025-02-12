@@ -11,7 +11,9 @@ const store = createStore({
         font: 0,
         desktop: true,
         currentPage: 1,
-        loggedin: false
+        loggedin: false,
+        breeds: [],
+        rawDog: []
     },
     mutations: {
         increment(state) {
@@ -41,6 +43,14 @@ const store = createStore({
         setLoggedin(state, log)
         {
             state.loggedin = log;
+        },
+        setBreeds(state, breeds)
+        {
+            state.breeds = breeds;
+        },
+        setRawDog(state, dogs)
+        {
+            state.rawDog = dogs;
         }
     },
     getters:

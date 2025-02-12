@@ -8,14 +8,14 @@
 			<span class="option-title" v-html="translate('font-family')"/>
 			<div class="option-content" tabindex="0" role="button" id="font-family" @click="toggleFont" v-on:keydown.enter="toggleFont">
 				<div class="option-knob" />
-				<span class="option-display" v-html="font === 0 ? translate('font-theme-first') : font === 1 ? translate('font-theme-second')  : font === 2 ? translate('font-theme-third') : font === 3 ? translate('font-theme-fourth') : translate('font-theme-fifth') " />
+				<span class="option-display" v-html="font === 0 ? translate('font-theme-first') : font === 1 ? translate('font-theme-second')  : translate('font-theme-third')" />
 			</div>
 		</div>
 		<div class="option-object">
 			<span class="option-title" v-html="translate('colors')"/>
 			<div class="option-content" tabindex="0" role="button" id="font-color" @click="toggleColorScale" v-on:keydown.enter="toggleColorScale">
 				<div class="option-knob" />
-				<span class="option-display" v-html="colorScale === 0 ? translate('color-theme-first') : colorScale === 1 ? translate('color-theme-second') : colorScale=== 2 ? translate('color-theme-third') : colorScale === 3 ? translate('color-theme-fourth') : translate('color-theme-fifth')" />
+				<span class="option-display" v-html="colorScale === 0 ? translate('color-theme-first') : colorScale === 1 ? translate('color-theme-second') : translate('color-theme-third')" />
 			</div>
 		</div>
 		<div class="option-object">
