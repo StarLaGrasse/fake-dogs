@@ -188,7 +188,6 @@
                     })
                 }
                 this.$store.commit("setMap", {...tempMap});
-                console.log(this.map);
                 this.builtMap = true;
             }
 		},

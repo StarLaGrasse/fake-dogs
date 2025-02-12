@@ -28,7 +28,9 @@
   "previous-button": "Prev",
 
   "dog-age": "Age: ",
-  "dog-location":  "ZIP Code: ",
+  "dog-location": "ZIP Code: ",
+
+  "filters":  "Filters:",
 
   "font-scale": "Font Scale",
   "font-family": "Font Family",

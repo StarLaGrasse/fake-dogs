@@ -58,12 +58,13 @@ export default {
         this.$store.commit("setResultsOpen", true);
 
         this.buildQueryString();
-        await this.fetchDogs(this.queryString);
-        document.addEventListener("login-successful", function(){this.fetchDogs(this.queryString)}.bind(this));
+        await this.fetchDogs(this.queryString + (this.queryString.includes("?") ? "&" : "?") + "sort=breed:asc");
+        document.addEventListener("login-successful", function(){this.fetchDogs(this.queryString  + (this.queryString.includes("?") ? "&" : "?") + "sort=breed:asc")}.bind(this));
     },
     methods:{
         fetchDogs: async function(query = "/dogs/search")
         {
+            console.log(query);
             this.displayDogs = [];
             this.next = "";
             this.prev = "";
@@ -102,7 +103,13 @@ export default {
                     this.queryString += (startedQuery ? "&" : "?");
                     if (!startedQuery) startedQuery = true;
                     this.queryString += "breeds=";
-                    this.queryString += encodeURI(JSON.stringify(this.filters.breeds));
+                    let badQuery = JSON.stringify(this.filters.breeds);
+                    while (badQuery.includes(" ")) badQuery = badQuery.replace(" ", "-");
+                    while (badQuery.includes("\"")) badQuery = badQuery.replace("\"", "");
+                    while (badQuery.includes("[")) badQuery = badQuery.replace("[", "");
+                    while (badQuery.includes("]")) badQuery = badQuery.replace("]", "");
+                    while (badQuery.includes(",")) badQuery = badQuery.replace(",", ":");
+                    this.queryString += badQuery;
                 }
                 if (this.filters.zipCodes && this.filters.zipCodes !== undefined && this.filters.zipCodes !== null && this.filters.zipCodes.length > 0) {
                     this.queryString += (startedQuery ? "&" : "?");
@@ -123,6 +130,7 @@ export default {
                     this.queryString += this.filters.ageMax;
                 }
             }
+            console.log(this.queryString);
             
         },
         changeSortState: async function(state = 0)
