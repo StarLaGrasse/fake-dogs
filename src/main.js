@@ -29,6 +29,10 @@ let init = async function () {
     {
         store.commit("setCurrentPage", 1);
     }
+    if (query.get("q"))
+    {
+        store.commit("setFilters", JSON.parse(decodeURI(query.get("q"))));
+    }
 
     createApp({ extends: App })
         .mixin(mixins)

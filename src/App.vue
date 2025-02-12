@@ -109,7 +109,8 @@
 			return {
 				displayedPage: 0,
                 pageTimeout: null,
-                jsonData: {}
+                jsonData: {},
+                builtMap: false
 			};
 		},
 		methods:
@@ -133,7 +134,10 @@
                             display = "options";
                             break;
                     }
-                    if (!skipHistory) window.history.pushState(null, "", "?page=" + display);
+                    if (!skipHistory) {
+                        if (Object.keys(this.filters).length > 0 && page === 2) { window.history.pushState(null, "", "?page=" + display + "&q=" + encodeURI(JSON.stringify(this.filters))); }
+                        else window.history.pushState(null, "", "?page=" + display);
+                    }
 					this.pageTimeout = null;
 				}.bind(this), 500);
             },
@@ -159,9 +163,33 @@
                     if (response.status === 200)
                     {
                         this.$store.commit("setLoggedin", true);
-                        response.json().then((json)=>{this.$store.commit("setBreeds",[...json]);});
+                        response.json().then((json)=>{this.$store.commit("setBreeds",[...json]); if (!this.builtMap) this.buildMap()});
                     }
                 });
+            },
+            buildMap: async function()
+            {
+                let tempMap = {...this.map};
+                let states = Object.keys(this.map);
+                for (let s = 0; s < states.length; states++)
+                {
+                    let state = states[s];
+                    await fetch("https://frontend-take-home-service.fetch.com/locations/search", {"method": "POST", "body":JSON.stringify([state]), "headers": {"Content-Type": "application/json; charset=utf-8"}, "credentials":"include"})
+                    .then((response)=>{
+                        if (response.status === 200){
+                            response.json().then((json)=>{
+                                json.results.forEach((location)=> {
+                                    if (!tempMap[state].cities.includes(location.city)) tempMap[state].cities.push(location.city);
+                                    if (!tempMap[state].zips.includes(location.zip_code)) tempMap[state].zips.push(location.zip_code);
+                                });
+                                tempMap[state].cities = this.mergeSort([...tempMap[state].cities]);
+                            })
+                        }
+                    })
+                }
+                this.$store.commit("setMap", {...tempMap});
+                console.log(this.map);
+                this.builtMap = true;
             }
 		},
 		computed:
@@ -171,15 +199,16 @@
                 currentPage: 'getCurrentPage',
                 loggedin: 'getLoggedin',
                 breeds: 'getBreeds',
-                resultsOpen: 'getResultsOpen'
+                resultsOpen: 'getResultsOpen',
+                filters: 'getFilters',
+                map: 'getMap'
 			})
         },
         mounted: async function ()
         {
-            this.displayedPage=this.currentPage;
+            setTimeout(function(){this.displayedPage=this.currentPage;}.bind(this), 500);
             window.addEventListener( "popstate", function () { requestAnimationFrame(this.goBack.bind(this)) }.bind(this));
             await this.getBreeds();
-
             document.addEventListener("login-successful", this.getBreeds.bind(this));
         }
 }

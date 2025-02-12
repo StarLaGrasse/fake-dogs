@@ -17,7 +17,18 @@
   "login-error-not-found": "Unable to connect to the server. Please try again at a later time.",
   "login-error-unknown": "Unknown error. Please try again at a later time.",
 
-  "search":  "Fetch Results!",
+  "search": "Fetch Results!",
+
+  "sort-control": "Sort By:",
+  "sort-breed": "Breed",
+  "sort-name": "Name",
+  "sort-age": "Age",
+
+  "next-button": "Next",
+  "previous-button": "Prev",
+
+  "dog-age": "Age: ",
+  "dog-location":  "ZIP Code: ",
 
   "font-scale": "Font Scale",
   "font-family": "Font Family",

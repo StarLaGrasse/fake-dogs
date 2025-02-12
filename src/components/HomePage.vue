@@ -15,19 +15,20 @@
         },
         data: function () {
             return {
-                skills: []
+                myFilters: {}
             };
         },
         mounted: async function()
         {
-            await fetch('./assets/data/skills-education.json').then((response) => { return response.json(); }).then((data) => {this.skills = this.mergeSort(data.skills, false, ["proficiency","skill"]); });
+            this.myFilters = {...this.filters};
         },
         methods:{
         },
         computed: {
             ...mapGetters({
                 colorScale: "getColorScale",
-                desktop: "getDesktop"
+                desktop: "getDesktop",
+                filters: "getFilters"
             })
         }
     }
