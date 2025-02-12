@@ -1,9 +1,8 @@
 <template>
     <div class="home-container">
-        <div class="home-content">
-            <span v-for="(skill, s) in skills" class="home-body" v-html="skill.proficiency + ' ' + skill.skill" :key="'skill'+s"/>
+        <div class="search-button" tabindex="0" role="button" id="search-button" @click="changePageFunction(2)" v-on:keydown.enter="changePageFunction(2)">
+            <span v-html="translate('search')"/>
         </div>
-        
     </div>
 </template>
 
@@ -12,6 +11,7 @@
     export default {
 		name: 'HomePage',
 		props: {
+            changePageFunction: {type: Function, default: function(page, skipHistory = false){ console.log(page); console.log(skipHistory);}}
         },
         data: function () {
             return {
@@ -47,50 +47,41 @@
         align-content: center;
         text-align: left;
 
-        .home-content {
+        .search-button {
             position: relative;
+            pointer-events: visible;
+            background-color: var(--header-bg);
+            width: fit-content;
+            height: fit-content;
+            font-size: font(24);
             display: flex;
             flex-direction: column;
-            justify-items: flex-start;
-            justify-content: flex-start;
-            align-items: center;
             align-content: center;
-            padding: 8px 10%;
-            width: fit-content;
-            height: fit-content;
-        }
-
-        .home-header {
-            width: fit-content;
-            height: fit-content;
-            font-size: font(32);
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+            margin-top: 8px;
+            padding: 16px 8px;
             font-family: var(--header-font);
-            position: relative;
             font-weight: 700;
+            text-transform: uppercase;
             text-align: center;
-        }
+            filter: drop-shadow(2px 2px 2px var(--font-color));
+            border-radius: 8px;
+            background-clip: border-box;
 
-        .home-subheader {
-            width: fit-content;
-            height: fit-content;
-            font-size: font(16);
-            font-family: var(--header-font);
-            position: relative;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
+            span {
+                position: relative;
+                color: var(--content-bg);
+            }
 
-        .home-body {
-            width: fit-content;
-            height: fit-content;
-            margin-top: 32px;
-            position: relative;
-            font-family: var(--body-font);
-            font-size: font(24);
-            font-weight: 400;
-            align-self: flex-start;
+            &:hover, &:active {
+                background-color: var(--accent-color);
+            }
+
+            &:active {
+                filter: none;
+            }
         }
     }
 </style>

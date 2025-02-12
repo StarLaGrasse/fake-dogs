@@ -2,7 +2,8 @@
   "home-header": "Starlene F. LaGrasse",
   "contact": "Site created by Starlene F. LaGrasse",
 
-  "home-button": "home",
+  "home-button": "search",
+  "results-button": "results",
   "options-button": "options",
 
   "login-title": "Please Enter Your Name & E-Mail to Continue",
@@ -14,7 +15,9 @@
   "login-error-no-email": "You must fill in your e-mail to continue",
   "login-error-invalid": "Invalid Credentials",
   "login-error-not-found": "Unable to connect to the server. Please try again at a later time.",
-  "login-error-unknown":  "Unknown error. Please try again at a later time.",
+  "login-error-unknown": "Unknown error. Please try again at a later time.",
+
+  "search":  "Fetch Results!",
 
   "font-scale": "Font Scale",
   "font-family": "Font Family",

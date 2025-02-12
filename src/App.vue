@@ -4,6 +4,9 @@
             <div class="header-option" role="button" tabindex="0" id="about-tab" :class="{'current': currentPage === 1}" @click="changePage(1)" v-on:keydown.enter="changePage(1)">
                 <span v-html="translate('home-button')" />
             </div>
+            <div v-if="resultsOpen" class="header-option" role="button" tabindex="0" id="about-tab" :class="{'current': currentPage === 2}" @click="changePage(2)" v-on:keydown.enter="changePage(2)">
+                <span v-html="translate('results-button')" />
+            </div>
             <div class="header-option" role="button" tabindex="0" id="options-tab" :class="{'current': currentPage === 10}" @click="changePage(10)" v-on:keydown.enter="changePage(10)">
                 <span v-html="translate('options-button')" />
             </div>
@@ -12,7 +15,10 @@
             <div class="app-view-window">
                 <div class="app-panel">
                     <TransitionerObject name="fade-and-blur-normal">
-                        <HomePage v-if="displayedPage === 1" :style="{'pointer-events': loggedin ? 'visible' : 'none'}" />
+                        <HomePage v-if="displayedPage === 1" :style="{'pointer-events': loggedin ? 'visible' : 'none'}" :change-page-function="changePage" />
+                    </TransitionerObject>
+                    <TransitionerObject name="fade-and-blur-normal">
+                        <ResultsPage v-if="displayedPage === 2" :style="{'pointer-events': loggedin ? 'visible' : 'none'}" />
                     </TransitionerObject>
                     <TransitionerObject name="fade-and-blur-normal">
                         <OptionsMenu v-if="displayedPage===10" />
@@ -31,7 +37,7 @@
                     </div>
                 </a>
             </div>
-            <span>Site created by Starlene F. LaGrasse</span>
+            <span v-html="translate('contact')"/>
             <div class="buttons-container">
                 <a href="https://www.linkedin.com/in/star-lagrasse" target="_blank">
                     <div class="contact-button">
@@ -41,7 +47,7 @@
             </div>
         </div>
         <div class="contacts-container mobile" v-else>
-            <span>Site created by Starlene F. LaGrasse</span>
+            <span v-html="translate('contact')" />
             <div class="buttons-container">
                 <a href="https://starlenelagrasse.com/" target="_blank">
                     <div class="contact-button">
@@ -86,6 +92,7 @@
     import OptionsMenu from './components/OptionsMenu.vue';
     import TransitionerObject from './components/TransitionerObject.vue';
     import LoginBumper from './components/LoginBumper.vue';
+    import ResultsPage from './components/ResultsPage.vue';
     import { mapGetters } from 'vuex';
 
 	export default {
@@ -95,12 +102,14 @@
 			ScanlineEffect,
             OptionsMenu,
             TransitionerObject,
-            LoginBumper
+            LoginBumper,
+            ResultsPage
 		},
 		data: function () {
 			return {
 				displayedPage: 0,
                 pageTimeout: null,
+                jsonData: {}
 			};
 		},
 		methods:
@@ -112,10 +121,13 @@
 				if (this.pageTimeout) clearTimeout(this.pageTimeout);
 				this.pageTimeout = setTimeout(function () {
                     this.displayedPage = page;
-                    let display = "home";
+                    let display = "search";
                     switch (page)
                     {
                         default:
+                            break;
+                        case 2:
+                            display = "search-results";
                             break;
                         case 10:
                             display = "options";
@@ -131,7 +143,7 @@
                 if (query.get("page")) {
                     let page = query.get("page");
                     switch (query.get("page")) {
-                        default: case 0: case 1:case "home":
+                        default: case 0: case 1: case "home": case "search":
                             this.changePage(1, page, true);
                             break;
                         case 10: case "options": case "config": case "configuration": case "menu": case "font":
@@ -144,8 +156,11 @@
             {
                 await fetch("https://frontend-take-home-service.fetch.com/dogs/breeds", {"method": "GET", "headers": {"Content-Type": "application/json; charset=utf-8"}, "credentials":"include"})
                 .then((response)=>{
-                    if (response.status === 200) this.$store.commit("setLoggedin", true);
-                    console.log(response.json());
+                    if (response.status === 200)
+                    {
+                        this.$store.commit("setLoggedin", true);
+                        response.json().then((json)=>{this.$store.commit("setBreeds",[...json]);});
+                    }
                 });
             }
 		},
@@ -154,7 +169,9 @@
 			...mapGetters({
                 scanlines: 'getScanlines',
                 currentPage: 'getCurrentPage',
-                loggedin: 'getLoggedin'
+                loggedin: 'getLoggedin',
+                breeds: 'getBreeds',
+                resultsOpen: 'getResultsOpen'
 			})
         },
         mounted: async function ()

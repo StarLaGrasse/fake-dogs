@@ -13,7 +13,8 @@ const store = createStore({
         currentPage: 1,
         loggedin: false,
         breeds: [],
-        rawDog: []
+        rawDog: [],
+        resultsOpen: false
     },
     mutations: {
         increment(state) {
@@ -51,6 +52,10 @@ const store = createStore({
         setRawDog(state, dogs)
         {
             state.rawDog = dogs;
+        },
+        setResultsOpen(state, open)
+        {
+            state.resultsOpen = open;
         }
     },
     getters:
@@ -63,7 +68,10 @@ const store = createStore({
         getLocale(state) { return state.locale; },
         getDesktop(state) { return state.desktop; },
         getCurrentPage(state) { return state.currentPage; },
-        getLoggedin(state) {return state.loggedin;}
+        getLoggedin(state) {return state.loggedin;},
+        getBreeds(state) {return state.breeds;},
+        getRawDog(state) {return state.rawDog;},
+        getResultsOpen(state) {return state.resultsOpen;}
     }
 })
 

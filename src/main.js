@@ -14,8 +14,11 @@ let init = async function () {
     let query = new URLSearchParams(window.location.search);
     if (query.get("page")) {
         switch (query.get("page")) {
-            default: case 0: case 1: case "home":
+            default: case 0: case 1: case "home": case "search":
                 store.commit("setCurrentPage", 1);
+                break;
+            case 2: case "results": case "searchResults": case "search-results":
+                store.commit("setCurrentPage", 2);
                 break;
             case 10: case "options": case "config": case "configuration": case "menu": case "font":
                 store.commit("setCurrentPage", 10);
